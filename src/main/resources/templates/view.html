@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>delete</title>
+    <title>View</title>
 </head>
 <body>
-<h1>Delete page</h1>
+<h1>View page</h1>
 <a th:href="@{/notes}">Back to list</a><br>
-<h3>Do you sure want to delete this post!!!</h3>
-<span style="color:green;" th:if="${message}" th:text="${message}"></span><br>
-<form th:action="@{/notes/delete}" method="post">
     <table>
         <tr>
             <td>id: </td>
@@ -28,8 +25,7 @@
             <!--<td th:text="" name="type" th:value="${null}"></td>-->
         </tr>
     </table>
-    <input type="submit" value="delete">
     <input type="hidden" th:value="${note.id}" name="id">
-</form>
+
 </body>
 </html>

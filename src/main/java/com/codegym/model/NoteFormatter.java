@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 @Component
-public class NoteFormatter implements Formatter<Optional<Note>> {
+public class NoteFormatter implements Formatter<Note> {
     private NoteService noteService;
 
     @Autowired
@@ -19,12 +19,12 @@ public class NoteFormatter implements Formatter<Optional<Note>> {
     }
 
     @Override
-    public Optional<Note> parse(String text, Locale locale) throws ParseException {
+    public Note parse(String text, Locale locale) throws ParseException {
         return noteService.findById(Integer.parseInt(text));
     }
 
     @Override
-    public String print(Optional<Note> object, Locale locale) {
+    public String print(Note object, Locale locale) {
         return null;
     }
 }

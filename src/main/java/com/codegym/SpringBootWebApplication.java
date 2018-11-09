@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @SpringBootApplication
+
 public class SpringBootWebApplication extends SpringBootServletInitializer {
 
     @Override
@@ -22,8 +23,8 @@ public class SpringBootWebApplication extends SpringBootServletInitializer {
         SpringApplication.run(SpringBootWebApplication.class, args);
     }
 
-    @Bean
-    public NoteService noteService() {
-        return new NoteServiceImpl();
-    }
+//    @Bean
+//    public NoteService noteService() {
+//        return new NoteServiceImpl();
+//    }
 }

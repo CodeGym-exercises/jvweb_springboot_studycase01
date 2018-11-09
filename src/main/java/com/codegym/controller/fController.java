@@ -39,8 +39,17 @@ public class fController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditPage(){
+    public String showEditPage(@PathVariable int id, Model model){
+        model.addAttribute("note",noteService.findById(id));
         return "edit";
+    }
+
+    @PostMapping("/edit")
+    public ModelAndView editNote(Note note){
+        ModelAndView modelAndView = new ModelAndView("edit");
+        noteService.save(note);
+        modelAndView.addObject("message","Edit success");
+        return modelAndView;
     }
 
     @GetMapping("/delete/{id}")
@@ -50,10 +59,18 @@ public class fController {
     }
 
     @PostMapping("/delete")
-    public ModelAndView deleteNote(@ModelAttribute Note note){
+    public ModelAndView deleteNote(@RequestParam("id") int id){
         ModelAndView modelAndView = new ModelAndView("delete");
-        noteService.delete(note.getId());
+        Note note = noteService.findById(id);
+        noteService.delete(id);
+        modelAndView.addObject("note",note);
         modelAndView.addObject("message","Delete success!!!");
         return modelAndView;
+    }
+
+    @GetMapping("/view/{id}")
+    public String showViewPage(@PathVariable int id, Model model){
+        model.addAttribute("note",noteService.findById(id));
+        return "view";
     }
 }

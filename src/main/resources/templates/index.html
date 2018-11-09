@@ -21,7 +21,7 @@
             <th>delete/edit</th>
         </tr>
         <tr th:each="note : ${notes}">
-            <td th:text="${note.id}"></td>
+            <td><a th:href="@{notes/view/{id}(id=${note.id})}"  th:text="${note.id}"></a></td>
             <td th:text="${note.title}"></td>
             <td th:text="${note.content}"></td>
             <td th:text="${note.type}"></td>

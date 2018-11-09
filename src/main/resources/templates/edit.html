@@ -6,7 +6,19 @@
 </head>
 <body>
 <h1>Edit page</h1>
-<a th:href="@{/notes}">Back to list</a><br>
 
+<span style="color:green;" th:if="${message}" th:text="${message}"></span>
+
+<form th:action="@{/notes/edit}" method="post" th:object="${note}">
+    <h3>Them ghi chu</h3>
+    <a th:href="@{/notes}">Back to list</a><br>
+    <input type="hidden" th:field="*{id}">
+
+    <label for="title">Tieu de: </label>
+    <input type="text" id="title" th:field="*{title}" placeholder="${note.title}"><br>
+    <label for="content">Noi dung: </label>
+    <input type="text" id="content" th:field="*{content}" placeholder="${note.title}"><br>
+    <input type="submit" value="submit">
+</form>
 </body>
 </html>
