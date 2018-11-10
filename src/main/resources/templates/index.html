@@ -12,6 +12,7 @@
 <body>
     <h1>List notes</h1>
     <a th:href="@{notes/create}">New note</a>
+    <a th:href="@{notes/createtype}">Create Type</a>
     <table th:object="${notes}">
         <tr>
             <th>#</th>
@@ -24,9 +25,15 @@
             <td><a th:href="@{notes/view/{id}(id=${note.id})}"  th:text="${note.id}"></a></td>
             <td th:text="${note.title}"></td>
             <td th:text="${note.content}"></td>
-            <td th:text="${note.type}"></td>
+            <td th:text="${note.type.getName()}"></td>
             <td><a th:href="@{notes/edit/{id}(id=${note.id})}">edit</a> | <a th:href="@{notes/delete/{id}(id=${note.id})}">delete</a></td>
         </tr>
     </table>
+
+    <div>
+        <a th:href="@{'/notes'(page=${notes.number - 1})}" th:if="${notes.hasPrevious()}">Previous</a>
+        <span th:text="${notes.number + 1}"></span>/<span th:text="${notes.totalPages}"></span>
+        <a th:href="@{'/notes'(page=${notes.number + 1})}" th:if="${notes.hasNext()}">Next</a>
+    </div>
 </body>
 </html>

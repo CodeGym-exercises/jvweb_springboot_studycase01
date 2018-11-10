@@ -1,8 +1,11 @@
-package com.codegym.service;
+package com.codegym.service.impl;
 
 import com.codegym.model.Note;
 import com.codegym.repository.NoteRepository;
+import com.codegym.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service("NoteService")
@@ -33,5 +36,10 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public void save(Note note) {
         noteRepository.save(note);
+    }
+
+    @Override
+    public Page<Note> findAll(Pageable pageable) {
+        return noteRepository.findAll(pageable);
     }
 }

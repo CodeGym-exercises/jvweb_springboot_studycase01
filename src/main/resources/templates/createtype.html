@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1>Create type</h1>
+
+<span style="color:green;" th:if="${message}" th:text="${message}"></span>
+
+<form th:action="@{/notes/createtype}" method="post" th:object="${type}">
+    <h3>Them ghi chu</h3>
+    <a th:href="@{/notes}">Back to list</a><br>
+
+    <input type="hidden" th:field="*{id}">
+
+    <label for="name">Type: </label>
+    <input type="text" id="name" th:field="*{name}"><br>
+
+    <label for="description">Description: </label>
+    <input type="text" id="description" th:field="*{description}"><br>
+
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

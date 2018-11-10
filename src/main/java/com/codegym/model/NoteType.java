@@ -7,6 +7,7 @@ import java.util.List;
 @Table(name = "note_type")
 public class NoteType {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "name")
     private String name;
@@ -23,7 +24,7 @@ public class NoteType {
         return id;
     }
 
-    public void setId(int id) {
+    public void setIdType(int id) {
         this.id = id;
     }
 
@@ -32,7 +33,11 @@ public class NoteType {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name.isEmpty()||name.equals("")){
+            this.name = "NaN";
+        }else{
+            this.name = name;
+        }
     }
 
     public String getDescription() {

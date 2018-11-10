@@ -3,14 +3,14 @@ package com.codegym.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Note")
+@Table(name = "note")
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "note_type_id")
+    @JoinColumn(name = "id_type")
     private NoteType type;
     @Column(name = "title")
     private String title;

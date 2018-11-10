@@ -1,17 +1,15 @@
 package com.codegym;
 
-import com.codegym.service.NoteService;
-import com.codegym.service.NoteServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @Configuration
 @SpringBootApplication
-
+@EnableSpringDataWebSupport
 public class SpringBootWebApplication extends SpringBootServletInitializer {
 
     @Override

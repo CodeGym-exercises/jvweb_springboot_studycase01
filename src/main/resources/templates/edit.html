@@ -7,7 +7,7 @@
 <body>
 <h1>Edit page</h1>
 
-<span style="color:green;" th:if="${message}" th:text="${message}"></span>
+<span th:style="${status.equals('red')?'color:red;':'color:green;'}" th:if="${message}" th:text="${message}"></span>
 
 <form th:action="@{/notes/edit}" method="post" th:object="${note}">
     <h3>Them ghi chu</h3>
@@ -18,6 +18,15 @@
     <input type="text" id="title" th:field="*{title}" placeholder="${note.title}"><br>
     <label for="content">Noi dung: </label>
     <input type="text" id="content" th:field="*{content}" placeholder="${note.title}"><br>
+    <input type="hidden" th:field="*{type}">
+    <select name="type" id="type">
+        <option th:each="t : ${types}"
+                th:value="${t.id}"
+                th:text="${t.name}"
+                th:selected="(${t.id} ==  *{type?.id})"
+        >
+        </option>
+    </select>
     <input type="submit" value="submit">
 </form>
 </body>
